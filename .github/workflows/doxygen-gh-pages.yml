@@ -1,0 +1,31 @@
+name: 'Deploy Doxygen docs to GitHub Pages'
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen graphviz -y
+
+      - name: Generate documentation
+        run: doxygen
+
+      - name: Create .nojekyll
+        run: touch html/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: html
+          single-commit: true

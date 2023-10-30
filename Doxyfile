@@ -1,0 +1,22 @@
+PROJECT_NAME           = libbase58check
+PROJECT_BRIEF          = "Library for Base58Check encoding and decoding"
+OUTPUT_DIRECTORY       = $(DOCDIR)
+OPTIMIZE_OUTPUT_FOR_C  = YES
+INLINE_SIMPLE_STRUCTS  = YES
+SHOW_INCLUDE_FILES     = NO
+SORT_BRIEF_DOCS        = YES
+WARN_NO_PARAMDOC       = YES
+FILE_PATTERNS          = *.h \
+                         *.dox
+VERBATIM_HEADERS       = NO
+GENERATE_HTML          = $(GENERATE_HTML)
+GENERATE_HTMLHELP      = $(GENERATE_HTMLHELP)
+GENERATE_CHI           = $(GENERATE_CHI)
+GENERATE_LATEX         = $(GENERATE_LATEX)
+GENERATE_RTF           = $(GENERATE_RTF)
+GENERATE_MAN           = $(GENERATE_MAN)
+GENERATE_XML           = $(GENERATE_XML)
+MAN_LINKS              = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+PREDEFINED             = __attribute__(x)=
