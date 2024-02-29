@@ -9,6 +9,7 @@ LT_INIT([disable-static])
 
 AC_PROG_CC
 AC_PROG_CXX
+AC_PROG_SED
 PKG_INSTALLDIR
 
 AC_ARG_ENABLE([assertions],

@@ -50,7 +50,7 @@ MOSTLYCLEANFILES = $(DX_CLEANFILES)
 
 if BUILD_MANPAGES
 man3_MANS = $(addprefix doxygen-doc/man/man3/,$(addsuffix .3,base58check.h \
-	$(shell sed -Ene 's/^((\w|\*)+\s+)+(\w+)\(.*$$/\3/p#)' $(srcdir)/base58check.h)))
+	$(shell $(SED) -Ene 's/^((\w|\*)+\s+)+(\w+)\(.*$$/\3/p#)' $(srcdir)/base58check.h)))
 $(man3_MANS) : doxygen-doc
 $(DX_DOCDIR)/$(PACKAGE).tag : $(include_HEADERS)
 endif
