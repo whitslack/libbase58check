@@ -54,7 +54,7 @@ size_t base58check_decode_buffer_size(const char *in, size_t n_in, size_t n_pad)
  * @endparblock
  * @param[in,out] n_out
  * @parblock
- * If @c *out is @c NULL upon entry, a pointer to the size of the buffer at
+ * If @c *out is not @c NULL upon entry, a pointer to the size of the buffer at
  * address @c *out, or else a pointer to the minimum number of excess bytes of
  * buffer space to allocate beyond the end of the encoding. Must not be
  * @c NULL.
@@ -92,7 +92,7 @@ int base58check_encode(char **restrict out, size_t *n_out, const unsigned char *
  * @endparblock
  * @param[in,out] n_out
  * @parblock
- * If @c *out is @c NULL upon entry, a pointer to the size of the buffer at
+ * If @c *out is not @c NULL upon entry, a pointer to the size of the buffer at
  * address @c *out, or else a pointer to the minimum number of excess bytes of
  * buffer space to allocate beyond the end of the decoded data. Must not be
  * @c NULL.
