@@ -17,7 +17,7 @@ static void test_round_trip(const char str[], size_t decoded_size) {
 	assert(out == str);
 }
 
-static void test_hash_mismatch(const char str[]) {
+static void test_invalid(const char str[]) {
 	try {
 		base58check::decode(str, 0);
 	}
@@ -27,6 +27,13 @@ static void test_hash_mismatch(const char str[]) {
 	throw std::logic_error("should have thrown");
 }
 
+static void test_empty_input_with_hdr() {
+	unsigned char buf[4], *out = buf;
+	size_t n_out = sizeof buf;
+	int ret = ::base58check_decode(&out, &n_out, "", 0, 4);
+	assert(ret < 0);
+}
+
 int main() {
 	test_encode("Hello world!", "gTazoqFi2U9CKLR6yjgYY8h");
 
@@ -34,7 +41,10 @@ int main() {
 	test_round_trip("1111111111111111111114oLvT2", 21);
 	test_round_trip("1BitcoinEaterAddressDontSendf59kuE", 21);
 
-	test_hash_mismatch("1BitcoinEaterAddressDontSendf59kuF");
+	test_invalid("");
+	test_invalid("1BitcoinEaterAddressDontSendf59kuF");
+
+	test_empty_input_with_hdr();
 
 	return 0;
 }

@@ -314,10 +314,9 @@ int base58check_decode(unsigned char **restrict out, size_t *n_out, const char *
 	while (n_in && *in == '1')
 		++n_leading_zeros, ++in, --n_in;
 
-	size_t n_need = decoded_size_upper_bound(n_in);
-	if (__builtin_uaddl_overflow(n_need, n_hdr, &n_need) ||
-			__builtin_uaddl_overflow(n_need, n_leading_zeros, &n_need) ||
-			n_need < 4 /* need at least 4 bytes for the hash fragment */)
+	size_t n_need = decoded_size_upper_bound(n_in) + n_leading_zeros;
+	if (n_need < 4 /* must have a hash fragment at least */ ||
+			__builtin_uaddl_overflow(n_need, n_hdr, &n_need))
 		return -1;
 
 	unsigned char *out_ = *out;
