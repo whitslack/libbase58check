@@ -1,5 +1,5 @@
 m4_define([version_major], [1])
-m4_define([version_minor], [0])
+m4_define([version_minor], [1])
 
 AC_INIT([libbase58check], m4_join([.], [version_major], [version_minor]))
 AC_CONFIG_AUX_DIR([build-aux])

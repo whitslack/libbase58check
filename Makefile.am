@@ -21,7 +21,7 @@ libbase58check_la_LIBADD = $(GMP_LIBS) $(OPENSSL_LIBS)
 # - oldprog+newlib and newprog+oldlib are both okay => +0:+1:+0
 # - oldprog+newlib is okay, but newprog+oldlib won't work => +1:=0:+1
 # - oldprog+newlib won't work => +1:=0:=0
-libbase58check_la_LDFLAGS = -no-undefined -version-info 0:0:0
+libbase58check_la_LDFLAGS = -no-undefined -version-info 0:1:0
 
 bin_PROGRAMS = base58check
 base58check_SOURCES = base58check.c
