@@ -328,6 +328,8 @@ int base58check_decode(unsigned char **restrict out, size_t *n_out, const char *
 	}
 	else if (n_out_ < n_need)
 		return -1;
+	else
+		n_out_ = n_need;
 
 	memset(out_ + n_hdr, 0, n_leading_zeros);
 	out_ += n_hdr += n_leading_zeros, n_out_ -= n_hdr;
