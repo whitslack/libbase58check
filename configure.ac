@@ -19,9 +19,9 @@ AC_ARG_ENABLE([assertions],
 AM_CONDITIONAL([NDEBUG], [test x"$enable_assertions" = xno])
 
 AC_ARG_ENABLE([tests],
-	[AS_HELP_STRING([--enable-tests], [build unit tests [default=no]])],
+	[AS_HELP_STRING([--enable-tests], [build unit tests [default=yes]])],
 	[enable_tests=$enableval],
-	[enable_tests=no])
+	[enable_tests=yes])
 AM_CONDITIONAL([BUILD_TESTS], [test x"$enable_tests" = xyes])
 
 PKG_CHECK_MODULES([GMP], [gmp])
