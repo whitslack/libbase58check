@@ -42,6 +42,7 @@ int main() {
 	test_round_trip("1BitcoinEaterAddressDontSendf59kuE", 21);
 
 	test_invalid("");
+	test_invalid("1111");
 	test_invalid("1BitcoinEaterAddressDontSendf59kuF");
 
 	test_empty_input_with_hdr();

@@ -335,8 +335,8 @@ int base58check_decode(unsigned char **restrict out, size_t *n_out, const char *
 	out_ += n_hdr += n_leading_zeros, n_out_ -= n_hdr;
 
 	size_t n_limbs = MP_NLIMBS(n_out_);
-	mp_limb_t *limbs = base58check_malloc(n_limbs * sizeof(mp_limb_t));
-	if (limbs) {
+	mp_limb_t *limbs;
+	if (n_limbs && (limbs = base58check_malloc(n_limbs * sizeof(mp_limb_t)))) {
 		limbs[n_limbs - 1] = 0; // decode_limbs might not write the most significant limb
 		if (decode_limbs(limbs, in, n_in) >= 0) {
 			limbs_to_bytes(out_, limbs, n_out_);
