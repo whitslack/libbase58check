@@ -13,6 +13,8 @@ include_HEADERS = base58check.h
 pkgconfig_DATA = libbase58check.pc
 EXTRA_DIST = $(pkgconfig_DATA)
 
+dist_man_MANS = base58check.1
+
 lib_LTLIBRARIES = libbase58check.la
 libbase58check_la_SOURCES = libbase58check.c
 libbase58check_la_CFLAGS = $(GMP_CFLAGS) $(OPENSSL_CFLAGS)

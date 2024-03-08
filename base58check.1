@@ -1,0 +1,68 @@
+.TH BASE58CHECK 1 2024-03-08 libbase58check
+.
+.SH NAME
+base58check \- encode/decode data in Base58Check format
+.
+.SH SYNOPSIS
+.SY base58check
+.OP \-d
+.OP \-h
+.YS
+.
+.SH DESCRIPTION
+.B base58check
+reads data from \fBstdin\fR and writes its Base58Check encoding to \fBstdout\fR.
+.
+.SH OPTIONS
+.TP
+.BR \-d ", " \-\-decode
+Decode a Base58Check encoding from \fBstdin\fR and write the decoded data to \fBstdout\fR.
+.TP
+.BR \-h ", " \-\-hex
+Use hexadecimal for data input/output.
+If this option is not specified, the data are read/written in raw binary.
+.
+.SH EXIT STATUS
+.B base58check
+returns 0 as its exit status if no errors were encountered.
+.PP
+If an error occurs, then the exit status is one of the following values, as specified in
+.BR sysexits.h (3):
+.TP
+.B 64
+.B Usage error.
+There was an error in the way the command was invoked.
+.TP
+.B 65
+.B Data error.
+There was an error in the data provided to the command.
+.TP
+.B 70
+.B Software error.
+An internal error occurred.
+This indicates a software bug or a hardware failure.
+.TP
+.B 74
+.B I/O error.
+An error occurred while reading from \fBstdin\fR or writing to \fBstdout\fR.
+.
+.SH EXAMPLES
+Generate a 256-bit private key and encode it as Base58Check in Bitcoin's Wallet Import Format (WIF):
+.IP
+.EX
+$ \fB{ printf \(aq\\x80\(aq ; head -c32 /dev/urandom ; printf \(aq\\x01\(aq ; } | base58check\fR
+KxmBZwPrX3u2dukBawC9u88BKAXuRRHmPwuLzLo8skAgBQoGnC6c
+.EE
+.PP
+Decode a Base58Check encoding from standard input to hexadecimal:
+.IP
+.EX
+$ \fBecho 1BitcoinEaterAddressDontSendf59kuE | base58check -dh\fR
+00759d6677091e973b9e9d99f19c68fbf43e3f05f9
+.EE
+.
+.SH REPORTING BUGS
+Please report any bugs at the
+.UR https://github.com/whitslack/libbase58check/issues
+libbase58check project page on GitHub
+.UE .
